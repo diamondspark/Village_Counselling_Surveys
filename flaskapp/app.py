@@ -10,10 +10,6 @@ app = Flask(__name__)
 def main():
     return render_template('index.html')
 
-@app.route('/sort_test',methods= ["GET"])
-def sorting():
-    uploads = '/Users/mop2014/Desktop/_Mohit/bi-att-flow'
-    return send_from_directory(directory=uploads, filename='run-demo.py')
 
 @app.route('/home/')
 def render_static():
@@ -47,12 +43,6 @@ def set_response_headers(response):
     response.headers['Expires'] = '0'
     return response
 
-##    df = Driver.sort(col_name)
-##    df.to_excel('/home/ubuntu/flaskapp/data/sorted_repo.xlsx')
-###    df.to_excel('/var/www/html/flaskapp/data/sorted_repo.xlsx')
-##    uploads = '/home/ubuntu/flaskapp/data/'
-##    return send_from_directory(directory=uploads, filename='sorted_repo.xlsx')
-####    print df.head()
 
 if __name__ == "__main__":
     app.run(debug=True)
