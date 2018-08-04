@@ -24,8 +24,8 @@ def sort_ph1(test_case_removal):
     
     output = Output(res[0],'1')
     output.do_it_all()
-    output.df.to_csv('Phase1 '+current_date+'.csv',index=False)
-    output.df.to_excel('Phase1 '+current_date+'.xlsx',index=False)
+    output.df.to_csv('/var/www/html/flaskapp/Output/Phase1 '+current_date+'.csv',index=False)
+    output.df.to_excel('/var/www/html/flaskapp/Output/Phase1 '+current_date+'.xlsx',index=False)
 
 def sort_ph2(test_case_removal):
     current_date = str(datetime.datetime.now().strftime("%Y-%m-%d"))
@@ -42,5 +42,5 @@ def sort_ph2(test_case_removal):
 
     output = Output(res[0],'2')
     output.do_it_all()
-    output.df.to_csv('Phase2 '+current_date+'.csv',index=False)
-    output.df.to_excel('Phase2 '+current_date+'.xlsx',index=False)
+    output.df.to_csv('/var/www/html/flaskapp/Output/Phase2 '+current_date+'.csv',index=False)
+    output.df.to_excel('/var/www/html/flaskapp/Output/Phase2 '+current_date+'.xlsx',index=False)
