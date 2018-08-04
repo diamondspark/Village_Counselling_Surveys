@@ -11,9 +11,9 @@ class Phase(object):
 
      __metaclass__ = ABCMeta
 
-     def __init__(self,concat=False):
+     def __init__(self,test_case_removal,concat=False):
           conn = Connection()
-          self.report = conn.retrieve_reports(concat)
+          self.report = conn.retrieve_reports(test_case_removal,concat)
 
      def sort_repo(self,criteria):
           df= self.report
