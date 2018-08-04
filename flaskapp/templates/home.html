@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <!-- Site made with Mobirise Website Builder v4.8.1, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.8.1, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="../static/styles/logo2.png" type="image/x-icon">
+  <meta name="description" content="">
+  <title>Home</title>
+  <link rel="stylesheet" href="../static/styles/tether/tether.min.css">
+  <link rel="stylesheet" href="../static/styles/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/styles/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="../static/styles/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="../static/styles/dropdown/css/style.css">
+  <link rel="stylesheet" href="../static/styles/theme/css/style.css">
+  <link rel="stylesheet" href="../static/styles/checkbox/css/style.css">
+  <link rel="stylesheet" href="../static/styles/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
+</head>
+<body>
+  
+
+<section class="cid-qTkA127IK8 mbr-fullscreen mbr-parallax-background" id="header2-1">
+
+    
+
+    
+
+    <div class="container align-center">
+        <div class="row justify-content-md-center">
+            <div class="mbr-white col-md-10">
+                <h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-1">
+                    EMPATHY WORKS SORT APP
+                </h1>
+                
+                <p class="mbr-text pb-3 mbr-fonts-style display-5">
+                    This is the demonstration UI for data analysis of Empathy works survey reports. Button "Phase 1" and "Phase 2" lets you download the sorted reports just for
+phase 1 and phase 2 participants respectively (as demonstrated last week). Retried and All-reports options are not functional yet as they are still work in progress.
+                </p>
+
+
+                <div>
+            <input type="radio" id="with_test_case" name="drone" checked/>
+            <label for="huey">With Test Cases</label>
+        </div>
+         <div>
+            <input type="radio" id="without_test_case" name="drone" />
+            <label for="dewey">Without Test Cases</label>
+        </div>
+
+                <div class="mbr-section-btn"><a class="btn btn-md btn-secondary display-4" onclick="ph1Function()" >Phase 1</a>  
+                  <a class="btn btn-md btn-secondary display-4" onclick="ph2Function()" >Phase 2</a>
+                    <a class="btn btn-md btn-white-outline display-4" href="https://mobirise.com">Retried</a>
+                     <a class="btn btn-md btn-white-outline display-4" >All Reports</a> 
+                     
+                    
+                     </div>
+            </div>
+        </div>
+    </div>
+    
+</section>
+
+ <script>
+function ph1Function() {
+  var testcase = document.getElementById("with_test_case").checked;
+  window.location.href = "http://127.0.0.1:5000/sort/1/csv/"+testcase;
+}
+
+function ph2Function() {
+  var testcase = document.getElementById("with_test_case").checked;
+  window.location.href = "http://127.0.0.1:5000/sort/2/csv/"+testcase;
+}
+</script>
+  <script src="../static/styles/web/assets/jquery/jquery.min.js"></script>
+  <script src="../static/styles/popper/popper.min.js"></script>
+  <script src="../static/styles/tether/tether.min.js"></script>
+  <script src="../static/styles/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../static/styles/smoothscroll/smooth-scroll.js"></script>
+  <script src="../static/styles/dropdown/js/script.min.js"></script>
+  <script src="../static/styles/touchswipe/jquery.touch-swipe.min.js"></script>
+  <script src="../static/styles/parallax/jarallax.min.js"></script>
+  <script src="../static/styles/theme/js/script.js"></script>
+  
+  
+</body>
+</html>
