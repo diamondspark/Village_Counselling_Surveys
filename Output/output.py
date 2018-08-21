@@ -7,9 +7,10 @@ class Output(object):
           self.df = df
           self.phase = phase
 
-     def do_it_all(self):
+     def do_it_all(self,later_former_indices):
           self.drop_redundant_cols()
           self.replace_nan_with_blank_string()
+          self.switch_later_former_score(later_former_indices)
           self.remove_blank_rows()
           
 
@@ -29,5 +30,29 @@ class Output(object):
           '''
           df=self.df
           self.df= df[df['email']!='']
+
+     def switch_later_former_score(self,later_former_indices):
+          '''If the details for survey taken later is first, we move it later in the row
+             and move the former taken score before
+          '''
+          df = self.df
+          for i in range(len(later_former_indices)):
+              temp = df.iat[later_former_indices[i],0]
+              df.iat[later_former_indices[i],0]= df.iat[later_former_indices[i],13]
+              df.iat[later_former_indices[i],13]= temp
+              
+              temp = df.iat[later_former_indices[i],2]
+              df.iat[later_former_indices[i],2]= df.iat[later_former_indices[i],15]
+              df.iat[later_former_indices[i],15]= temp
+              
+              temp = df.iat[later_former_indices[i],3]
+              df.iat[later_former_indices[i],3]= df.iat[later_former_indices[i],16]
+              df.iat[later_former_indices[i],16]= temp
+              
+              temp = df.iat[later_former_indices[i],12]
+              df.iat[later_former_indices[i],12]= df.iat[later_former_indices[i],17]
+              df.iat[later_former_indices[i],17]= temp
+
+          self.df=df
 
 
