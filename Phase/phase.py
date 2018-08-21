@@ -68,8 +68,9 @@ class Phase(object):
      def percent_difference(self,df,both_repo_completed):
           ''' Drop %_difference column coz it's old miscalculated data.
               For all participants who have completed both survey, insert into %_difference_1, their
-              score difference between survey taken later - survey taken before (chronologically)
-              Also return a list of scores of surveys taken later and list of scores of survey taken before
+              score difference between survey taken later - survey taken before (chronologically).
+              We also want to make sure surveys taken first are before in row than survey taken later. So return
+              index of rows where the later surveys are put first on the row.
           '''
 
           df.drop('%_difference',axis=1,inplace=True)
@@ -85,6 +86,7 @@ class Phase(object):
 
           former_scores=[]
           later_scores=[]
+          former_scores_after=[]
           
           for i in range(len(both_repo_completed)):
                
@@ -101,19 +103,21 @@ class Phase(object):
                     df.iat[both_repo_completed[i],percent_diff1_col_index]= int(df.iat[both_repo_completed[i],emq_col_index])-int(df.iat[both_repo_completed[i],emq1_col_index])
                     later_scores.append(int(df.iat[both_repo_completed[i],emq_col_index]))
                     former_scores.append(int(df.iat[both_repo_completed[i],emq1_col_index]))
+                    former_scores_after.append(both_repo_completed[i])
      
 
-          return df, later_scores,former_scores
+          return df,former_scores,later_scores,former_scores_after
                     
-               
-
-                    
-
-
 
      @abstractmethod
      def filterPhaseReports(self):
           '''Each kind of phase has it's own version of filtering just that phase's reports
+          '''
+          pass
+
+     @abstractmethod
+     def averagePercentDiff(self,scorelist1,scorelist2):
+          '''Each kind of phase has it's own version of summing the scores
           '''
           pass
 
