@@ -21,7 +21,7 @@ def app_sort(ph,kind,test_case_removal,methods=["GET","POST"]):
     date = str(datetime.datetime.now().strftime("%Y-%m-%d"))
     if ph == '1':
         Driver.sort_ph1(test_case_removal)
-        uploads = '/Users/mohit/Village_Counselling_Surveys/flaskapp/'
+        uploads = '/var/www/html/flaskapp/Output/'
         if kind == 'csv':
             filename='Phase1 '+date+'.csv'
         if kind =='excel':
@@ -29,11 +29,19 @@ def app_sort(ph,kind,test_case_removal,methods=["GET","POST"]):
         return send_from_directory(directory=uploads, filename=filename, cache_timeout=-1, as_attachment=True)
     if ph =='2':
         Driver.sort_ph2(test_case_removal)
-        uploads = '/Users/mohit/Village_Counselling_Surveys/flaskapp/'
+        uploads = '/var/www/html/flaskapp/Output/'
         if kind == 'csv':
             filename='Phase2 '+date+'.csv'
         if kind =='excel':
             filename = 'Phase2 '+date+'.xlsx'
+        return send_from_directory(directory=uploads, filename=filename, cache_timeout=-1, as_attachment=True)
+    if ph=='3':
+        Driver.sort_ph3(test_case_removal)
+        uploads = '/var/www/html/flaskapp/Output/'
+        if kind=='csv':
+            filename='No Phase '+date+'.csv'
+        if kind =='excel':
+            filename = 'No Phase '+date+'.xlsx'
         return send_from_directory(directory=uploads, filename=filename, cache_timeout=-1, as_attachment=True)
 
 @app.after_request
