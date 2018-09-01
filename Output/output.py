@@ -7,10 +7,11 @@ class Output(object):
           self.df = df
           self.phase = phase
 
-     def do_it_all(self,later_former_indices):
+     def do_it_all(self,later_former_indices=None):
           self.drop_redundant_cols()
           self.replace_nan_with_blank_string()
-          self.switch_later_former_score(later_former_indices)
+          if self.phase!='3':
+               self.switch_later_former_score(later_former_indices)
           self.remove_blank_rows()
           
 
@@ -21,6 +22,8 @@ class Output(object):
                self.df.drop(['Phase2','Phase2_1','short','short_1','redo','redo_1'],axis=1,inplace=True)
           elif self.phase =='2':
                self.df.drop(['Phase1','Phase1_1','short','short_1','redo','redo_1'],axis=1,inplace=True)
+          elif self.phase =='3':
+               self.df.drop(['short','short_1'],axis=1,inplace=True)
 
      def replace_nan_with_blank_string(self):
           self.df.replace('nan','',regex=True,inplace=True)
