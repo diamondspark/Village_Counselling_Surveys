@@ -54,7 +54,7 @@ phase 1 and phase 2 participants respectively (as demonstrated last week). Retri
 
                 <div class="mbr-section-btn"><a class="btn btn-md btn-secondary display-4" onclick="ph1Function()" >Phase 1</a>  
                   <a class="btn btn-md btn-secondary display-4" onclick="ph2Function()" >Phase 2</a>
-                    <a class="btn btn-md btn-white-outline display-4" href="https://mobirise.com">Retried</a>
+                    <a class="btn btn-md btn-white-outline display-4" onclick="ph3Function()">Retried</a>
                      <a class="btn btn-md btn-white-outline display-4" >All Reports</a> 
                      
                     
@@ -74,6 +74,12 @@ function ph1Function() {
 function ph2Function() {
   var testcase = document.getElementById("with_test_case").checked;
   window.location.href = "http://127.0.0.1:5000/sort/2/csv/"+testcase;
+}
+
+function ph3Function(){
+  var testcase = document.getElementById("with_test_case").checked;
+  window.location.href = "http://127.0.0.1:5000/sort/3/csv/"+testcase;
+
 }
 </script>
   <script src="../static/styles/web/assets/jquery/jquery.min.js"></script>
