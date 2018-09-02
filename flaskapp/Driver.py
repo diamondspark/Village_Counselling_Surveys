@@ -82,6 +82,7 @@ def sort_ph2(test_case_removal):
     worksheet.write_string(4, 0, "Sum of all Phase2 surveys taken later ")
     worksheet.write_string(4, 1, str(later_sum))
     worksheet.write_string(5, 0, "Total Phase2 Participants ")
+    worksheet.write_string(5, 1, str(total_participants))
     worksheet.write_string(6, 0, "Average of former scores ")
     worksheet.write_string(6, 1, str(average_former))
     worksheet.write_string(7, 0, "Average of later scores ")
