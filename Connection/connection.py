@@ -1,6 +1,5 @@
 import pandas as pd
 from bs4 import BeautifulSoup
-import urllib2 
 import requests
 
 username = ''
@@ -39,7 +38,7 @@ class Connection(object):
                             'short_1','quiz_1','Phase1_1','Phase2_1','date_1','time_1','user_1','email_1','age_1','gender_1','marital_status_1','sexual_orientation_1','professional_designation_1','years_in_practice_1','emq_1','redo_1','%_difference_1']
 
           if test_case_removal:
-               df_concat[df_concat.user.str.contains("test",case=False) == False]
+               df_concat=df_concat[df_concat.user.str.contains("test",case=False) == False]
                
           return df_concat
 
