@@ -39,9 +39,9 @@ def app_sort(ph,kind,test_case_removal,methods=["GET","POST"]):
         Driver.sort_ph3(test_case_removal)
         uploads = '/var/www/html/flaskapp/Output/'
         if kind=='csv':
-            filename='No Phase '+date+'.csv'
+            filename='No_Phase '+date+'.csv'
         if kind =='excel':
-            filename = 'No Phase '+date+'.xlsx'
+            filename = 'No_Phase '+date+'.xlsx'
         return send_from_directory(directory=uploads, filename=filename, cache_timeout=-1, as_attachment=True)
 
 @app.after_request

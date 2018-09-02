@@ -7,6 +7,7 @@ from connection import Connection
 sys.path.append('var/www/html/flaskapp/Phase')
 from phase1 import Phase1
 from phase2 import Phase2
+from phase3 import Phase3
 sys.path.append('var/www/html/flaskapp/Output')
 from output import Output
 import datetime
@@ -96,6 +97,7 @@ def sort_ph3(test_case_removal):
     ph.filterPhaseReports()
     redo_index = ph.redoScoreIndices()
     ph.percent_difference(redo_index)
+    df= ph.report
     redo_sum = df[df['redo'].notnull()]['emq'].sum()
     non_redo_sum = df[df['redo'].isnull()]['emq'].sum()
     ph.report=ph.sort_repo('email')
@@ -103,19 +105,18 @@ def sort_ph3(test_case_removal):
 
     output = Output(df,'3')
     output.do_it_all()
-
-    writer = pd.ExcelWriter('/var/www/html/flaskapp/Output/Phase3 '+current_date+'.xlsx')
+    writer = pd.ExcelWriter('/var/www/html/flaskapp/Output/No_Phase '+current_date+'.xlsx',engine='xlsxwriter')
     output.df.to_excel(writer,startcol = 0, startrow = 10,index=False)
     worksheet = writer.sheets['Sheet1']
     worksheet.write_string(0, 0, 'EmQ No Phase/Redo Export – '+current_date)
     worksheet.write_string(1, 0, "Number of Redo Participants")
     worksheet.write_string(1, 1, str(len(redo_index)))
-    worksheet.write_string(3, 0, "Sum of all redo participants ")
-    worksheet.write_string(3, 1, str(redo_sum))
-    worksheet.write_string(4, 0, "Sum of all non-phase  participants (except redo) ")
-    worksheet.write_string(4, 1, str(non_redo_sum))
-    worksheet.write_string(5, 0, "Average % Difference ")
-    worksheet.write_string(5, 1, str('Insert number here'))
+    worksheet.write_string(2, 0, "Sum of all redo participants ")
+    worksheet.write_string(2, 1, str(redo_sum))
+    worksheet.write_string(3, 0, "Sum of all non-phase  participants (except redo) ")
+    worksheet.write_string(3, 1, str(non_redo_sum))
+    worksheet.write_string(4, 0, "Average % Difference ")
+    worksheet.write_string(4, 1, str('Insert number here'))
     writer.save()
 
 
