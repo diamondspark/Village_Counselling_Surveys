@@ -41,7 +41,7 @@ def sort_ph1(test_case_removal):
     worksheet.write_string(3, 1, str(bag_sum))
     worksheet.write_string(4, 0, "Sum of all Boss' Dinner surveys taken in Phase1")
     worksheet.write_string(4, 1, str(boss_sum))
-    worksheet.write_string(5, 0, "Total Phase2 Participants ")
+    worksheet.write_string(5, 0, "Total Phase1 Participants ")
     worksheet.write_string(5, 1, str(total_participants))
     worksheet.write_string(6, 0, "Average of Bagging Grocery scores ")
     worksheet.write_string(6, 1, str(average_bag))
