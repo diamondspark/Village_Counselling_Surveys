@@ -4,7 +4,7 @@ import requests
 
 username = ''
 password = ''
-url = 'http://empathyworks.org/wp-admin/admin.php?page=dataexchange%2Freportspage.php'
+url = 'https://empathyworks.org/wp-admin/admin.php?page=dataexchange%2Freportspage.php'
 
 class Connection(object):
      def __init__(self):
@@ -15,7 +15,7 @@ class Connection(object):
 
      def retrieve_reports(self,test_case_removal,concat=False):
           REQUEST_URL = url
-          POST_LOGIN_URL = 'http://empathyworks.org/wp-login.php'
+          POST_LOGIN_URL = 'https://empathyworks.org/wp-login.php'
           with requests.Session() as session:
               post = session.post(POST_LOGIN_URL, data=self.payload)
               r = session.get(REQUEST_URL)
@@ -34,8 +34,8 @@ class Connection(object):
           df.columns = [''] * len(df.columns)
           frames = [df,df]
           df_concat = pd.concat(frames,axis=1)
-          df_concat.columns=['short','quiz','Phase1','Phase2','date','time','user','email','age','gender','marital_status','sexual_orientation','professional_designation','years_in_practice','emq','redo','%_difference',
-                            'short_1','quiz_1','Phase1_1','Phase2_1','date_1','time_1','user_1','email_1','age_1','gender_1','marital_status_1','sexual_orientation_1','professional_designation_1','years_in_practice_1','emq_1','redo_1','%_difference_1']
+          df_concat.columns=['short','quiz_1','Phase1','Phase2','date','time','user','email','age','gender','marital_status','sexual_orientation','professional_designation','years_in_practice','emq_1','redo','%_difference',
+                            'short_2','quiz_2','Phase1_2','Phase2_2','date_2','time_2','user_2','email_2','age_2','gender_2','marital_status_2','sexual_orientation_2','professional_designation_2','years_in_practice_2','emq_2','redo_2','%_difference_2']
 
           if test_case_removal:
                df_concat=df_concat[df_concat.user.str.contains("test",case=False) == False]

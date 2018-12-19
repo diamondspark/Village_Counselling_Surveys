@@ -1,0 +1,8 @@
+flask
+pandas
+requests
+beautifulsoup4
+DateTime
+python-dateutil
+lxml
+xlsxwriter

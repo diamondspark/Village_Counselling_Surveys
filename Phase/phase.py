@@ -47,7 +47,7 @@ class Phase(object):
               If only one survey is taken then email_1 would be empty anyways.
           '''
           both_survey_completed_index=[]
-          email_1_col_index = df.columns.get_loc("email_1")
+          email_1_col_index = df.columns.get_loc("email_2")
           for i in range(len(df)):
                if df.iat[i,email_1_col_index] != '':
                     both_survey_completed_index.append(i)
@@ -57,7 +57,7 @@ class Phase(object):
           '''If email is present and email_1 is absent then only one phase is completed.
              Which phase is completed is dependent on which phase(phase1 or phase2) object is being dealt with
           '''
-          email_1_col_index = df.columns.get_loc("email_1")
+          email_1_col_index = df.columns.get_loc("email_2")
           email_col_index = df.columns.get_loc("email")
           single_survey_completed_index=[]
           for i in range(len(df)):
@@ -74,14 +74,15 @@ class Phase(object):
           '''
 
           df.drop('%_difference',axis=1,inplace=True)
+          df.rename(columns={'%_difference_2':'Difference'},inplace=True)
 
           date_col_index = df.columns.get_loc("date")
           time_col_index = df.columns.get_loc("time")
-          date1_col_index = df.columns.get_loc("date_1")
-          time1_col_index = df.columns.get_loc("time_1")
-          emq_col_index = df.columns.get_loc("emq")
-          emq1_col_index = df.columns.get_loc("emq_1")
-          percent_diff1_col_index = df.columns.get_loc('%_difference_1')
+          date1_col_index = df.columns.get_loc("date_2")
+          time1_col_index = df.columns.get_loc("time_2")
+          emq_col_index = df.columns.get_loc("emq_1")
+          emq1_col_index = df.columns.get_loc("emq_2")
+          percent_diff1_col_index = df.columns.get_loc('Difference')
 
 
           former_scores=[]
