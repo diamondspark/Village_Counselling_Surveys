@@ -46,7 +46,31 @@ class Phase1(Phase):
                          bag_scores.append(score2)
           return bag_scores,boss_scores
 
-     
+     def get_total_scores_and_people(self,df):
+          quiz1_col_index = df.columns.get_loc("quiz_1")
+          quiz2_col_index= df.columns.get_loc("quiz_2")
+          score1_col_index= df.columns.get_loc("emq_1")
+          score2_col_index= df.columns.get_loc("emq_2")
+          bg_ppl,bg_scores,bd_ppl,bd_scores=[],[],[],[]
+          for i in range(len(df)):
+               if df.iat[i,quiz1_col_index]=='Bagging Groceries':
+                    bg_ppl.append(i)
+                    bg_scores.append(df.iat[i,score1_col_index])
+               elif df.iat[i,quiz1_col_index]=="Boss' Dinner":
+                    bd_ppl.append(i)
+                    bd_scores.append(df.iat[i,score1_col_index])
+
+          for i in range(len(df)):
+               if df.iat[i,quiz2_col_index]=='Bagging Groceries':
+                    bg_ppl.append(i)
+                    bg_scores.append(df.iat[i,score2_col_index])
+               elif df.iat[i,quiz2_col_index]=="Boss' Dinner":
+                    bd_ppl.append(i)
+                    bd_scores.append(df.iat[i,score2_col_index])
+
+
+
+          return bg_ppl,bg_scores,bd_ppl,bd_scores
                     
                     
                     

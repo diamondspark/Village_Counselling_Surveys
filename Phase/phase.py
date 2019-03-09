@@ -53,17 +53,20 @@ class Phase(object):
                     both_survey_completed_index.append(i)
           return both_survey_completed_index
 
+
      def single_survey_completed(self,df):
           '''If email is present and email_1 is absent then only one phase is completed.
              Which phase is completed is dependent on which phase(phase1 or phase2) object is being dealt with
           '''
-          email_1_col_index = df.columns.get_loc("email_2")
+          email_1_col_index = df.columns.get_loc("email_1")
           email_col_index = df.columns.get_loc("email")
           single_survey_completed_index=[]
           for i in range(len(df)):
                if df.iat[i,email_col_index]!='' and df.iat[i,email_1_col_index]=='':
                     single_survey_completed_index.append(i)
           return single_survey_completed_index
+
+     
 
      def percent_difference(self,df,both_repo_completed):
           ''' Drop %_difference column coz it's old miscalculated data.
